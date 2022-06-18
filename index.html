@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Daily Bible Verse</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="foundation.min.css"/>
+        <link rel="manifest" href="manifest.json">
+        <script src="foundation.min.js"></script>
+        <script src="jquery.js"></script>
+        <script src="what-input.js"></script>
+    </head>
+    <body>
+        <h1 style="text-align: center; padding-top: 2%;"><b>Daily Bible Verse</b></h1>
+        <div style='text-align: center;' id='today'>Today's Date: </div>
+        <hr/>
+        <p style="text-align: center; padding-left: 10%; padding-right: 10%;" id="newQuote"></p>
+        <img style='padding-left: 10%; padding-right: 10%;' src='https://hdclipartall.com/images/bible-clip-art-tumundografico-bible-clipart-1910_781.jpg'>
+    </body>
+    <script>
+        (function() {
+  $(document ).ready(function() {
+      getVerse();
+  });
+  var getVerse = function() {
+      $.ajax({
+        url: "https://labs.bible.org/api/?passage=votd&type=json&callback=myCallback", 
+        crossDomain: true,
+        dataType: 'jsonp',
+        success: function(result){
+           $("#newQuote")
+             .html('<strong>'+
+                   result[0].bookname+
+                   ' ' + result[0].chapter +
+                   ':' + result[0].verse +
+                   '</strong> ' +
+                   result[0].text);
+        }
+      });
+  };
+})();
+    </script>
+    <script>
+        var todaysDate = document.getElementById("today");
+        var content = document.createTextNode(new Date().toLocaleDateString());
+        todaysDate.appendChild(content);
+    </script>
+</html>

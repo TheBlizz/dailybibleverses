@@ -1,0 +1,21 @@
+{ 
+
+  "name": "Daily Bible Verses", 
+
+  "short_name": "Daily Bible", 
+
+  "start_url": "http://www.dailybibleverses.tk", 
+
+  "display": "standalone", 
+
+  "icons": [{ 
+
+    "src": "images/logo.png", 
+
+    "sizes": "512x512", 
+
+    "type": "image/png" 
+
+  }] 
+
+}
